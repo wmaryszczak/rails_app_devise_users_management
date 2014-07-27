@@ -1,0 +1,30 @@
+.container
+  %h2 Users
+  = link_to 'New', new_user_path, :class => 'btn btn-primary'
+  %table.table.table-hover
+    %thead
+      %tr
+        %th ID
+        %th Login
+        %th Email
+        %th Role
+        %th Signed In Count
+        %th Actions
+    %tbody
+    - @users.each do |user|
+      %tr
+        %td
+          = user.id
+        %td
+          = link_to user.login, user_path(user)
+        %td
+          = user.email
+        %td
+          = user.role
+        %td
+          = user.sign_in_count
+        %td
+          %a.reset_passwd.btn.btn-primary.btn-sm.ladda-button{"href" => '#', "data-style" => "zoom-in", "data-size" => "l", "data" => {"id" => user.id}}
+            %span.ladda-label Reset Password 
+          = link_to 'Show', user_path(user), :class => 'btn btn-sm btn-info'
+          = link_to 'Destroy', user_path(user), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-sm btn-danger'

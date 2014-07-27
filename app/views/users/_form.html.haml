@@ -1,0 +1,16 @@
+%h2 New User
+= form_for @user, html: {class: "form-horizontal" } do |f|
+  %fieldset
+    .form-group
+      = f.label :login, class: "control-label col-sm-2"
+      .col-sm-4
+        = f.text_field :login, class: "form-control", placeholder: "Login"
+    .form-group
+      = f.label :email, class: "control-label col-sm-2"
+      .col-sm-4
+        = f.email_field :email, class: "form-control", placeholder: "Email"
+    .form-group
+      = f.label :role, class: "control-label col-sm-2"
+      .col-sm-4
+        = f.select :role, options_for_select(User.roles.collect { |s| [s[0].humanize, s[0]] }, selected: @user.role), {} , class: "form-control"
+    = f.submit class: "btn btn-default"
