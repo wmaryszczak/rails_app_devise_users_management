@@ -2,18 +2,22 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    authorize! :read, User, :message => "You are not allowed to see users."
   end
 
   def show
     @user = User.find(params[:id])
+    authorize! :read, User, :message => "You are not allowed to see user."
   end
 
   def new
     @user = User.new
+    authorize! :create, User, :message => "You are not allowed to create new user."
   end
 
   def create    
     @user = User.new(params.require(:user).permit!)
+    authorize! :create, User, :message => "You are not allowed to create new user."
     if @user.save
       @user.send_reset_password_instructions
       respond_to do |format|
@@ -32,9 +36,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize! :create, User, :message => "You are not allowed to modify user."
   end
 
   def destroy
+    authorize! :create, User, :message => "You are not allowed to destroy user."
     begin
       user = User.destroy(params[:id])
       flash[:notice] = "#{user.login} has been removed successfully"

@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 #gem 'twitter-bootstrap-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3', :require => "twitter-bootstrap-rails"
 gem 'devise'
+gem 'cancan'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'ladda-bootstrap-rails'
@@ -47,6 +48,8 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'spring'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
 end
 
 group :production do

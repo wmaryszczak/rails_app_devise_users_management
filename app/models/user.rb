@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
   end
 
   def password_required?
-    persisted? && (password.present? || password_confirmation.present?)
+    persisted? && reset_password_token.present?
   end
 end
