@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require spin
 //= require ladda
+//= require jquery-fileupload/basic
 //= require_tree .
 
 var showNotification = function(data){
